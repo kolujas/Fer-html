@@ -1,0 +1,18 @@
+body{
+  background-color: #fdf5fc;
+}
+
+
+.custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .custom-checkbox input {
+    margin-top: 0.3rem;
+  }
+
+  .custom-checkbox label {
+    margin-left: 0.5rem;
+    flex: 1;
+  }
