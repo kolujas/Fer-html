@@ -70,21 +70,15 @@
   </div>
 
   <script>
-    // Generar una nueva versión en cada carga
-    const version = new Date().getTime();
+    if ('serviceWorker' in navigator) {
+      caches.keys().then(function(names) {
+        for (let name of names) caches.delete(name);
+      });
+    }
 
-    // Actualizar los links de CSS y JS con la nueva versión
-    document.querySelectorAll('link[rel="stylesheet"], script').forEach(element => {
-      const srcAttr = element.tagName === 'LINK' ? 'href' : 'src';
-      const url = new URL(element.getAttribute(srcAttr), window.location.href);
-      url.searchParams.set('v', version);
-      element.setAttribute(srcAttr, url.toString());
-    });
-
-    // Recargar la página solo si los recursos están actualizados
-    window.addEventListener('load', function() {
-      window.location.reload(true);
-    });
+    // Recargar la página para cargar los nuevos recursos
+    window.location.reload(true);
+  </script>
   </script>
 </body>
 
